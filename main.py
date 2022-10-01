@@ -23,7 +23,7 @@ lats = [51, -10, 40, -20]
 
 x, y = map(lons, lats)
 
-map.scatter(x, y, marker='o', color='r',  markersize=10)
+map.scatter(x, y, marker='o', color='r')
 
 ds = gdal.Open("../sample_files/dem.tiff")
 data = ds.ReadAsArray()
