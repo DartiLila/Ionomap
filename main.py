@@ -25,6 +25,15 @@ x, y = map(lons, lats)
 
 map.scatter(x, y, marker='o', color='r',  markersize=10)
 
+ds = gdal.Open("../sample_files/dem.tiff")
+data = ds.ReadAsArray()
+
+xx = linspace(0, map.urcrnrx, data.shape[1])
+yy = linspace(0, map.urcrnry, data.shape[0])
+
+xxx, yyy = meshgrid(xx, yy)
+
+map.pcolormesh(xxx, yyy, data)
 
 plt.title("Ionosphere Projection")
 plt.show()
