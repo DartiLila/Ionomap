@@ -1,12 +1,9 @@
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import numpy as np
-from osgeo import gdal
-from numpy import linspace
-from numpy import meshgrid
 
 # Create the map // mos harro ne fund res = i
-map = Basemap(projection='kav7',lon_0=0,resolution='c')
+map = Basemap(projection='kav7', lon_0=0, resolution='i')
 
 # Color the map acording to area (Continents green, ocans and lakes black)
 map.drawmapboundary(fill_color='black')
@@ -25,16 +22,6 @@ x, y = map(lons, lats)
 
 map.scatter(x, y, marker='o', color='r')
 
-ds = gdal.Open("../sample_files/dem.tiff")
-data = ds.ReadAsArray()
-
-xx = linspace(0, map.urcrnrx, data.shape[1])
-yy = linspace(0, map.urcrnry, data.shape[0])
-
-xxx, yyy = meshgrid(xx, yy)
-
-map.pcolormesh(xxx, yyy, data)
-
 plt.title("Ionosphere Projection")
 plt.show()
-plt.savefig('test.png')
+plt.savefig('Map.png')
