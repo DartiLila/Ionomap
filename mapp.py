@@ -63,4 +63,3 @@ cbar.set_label('AER')
 
 plt.title('Ionosphere Projection')
 plt.savefig("C:/Users/User/Documents/GitHub/Ionomap" + "/assets/Map.png")
-plt.show()
