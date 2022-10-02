@@ -40,12 +40,12 @@ map.scatter(x, y, marker='o', color='m')
 
 nc = NetCDFFile('/Users/User/Documents/GitHub/Ionomap/exampleData/dataset1.nc')
 
-ionovar = nc.variables['amountofprecip']
+ionovar = nc.variables['percent_of_normal']
 data = 0.01 * ionovar[:]
-latcorners = nc.variables['lat'][:]
-loncorners = -nc.variables['lon'][:]
-lon_0 = -nc.variables['true_lon'].getValue()
-lat_0 = nc.variables['true_lat'].getValue()
+latcorners = nc.variables['y'][:]
+loncorners = -nc.variables['x'][:]
+#lon_0 = -nc.variables['normal'].getValue()
+#lat_0 = nc.variables['observation'].getValue()
 
 fig = plt.figure(figsize=(8, 8))
 ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
@@ -53,13 +53,13 @@ ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
 ny = data.shape[0]
 nx = data.shape[1]
 lons, lats = map.makegrid(nx, ny)  # get lat/lons of ny by nx evenly space grid.
-x, y = map(lons, lats)  # compute map proj coordinates.
+xx, yy = map(lons, lats)  # compute map proj coordinates.
 
 clevs = [0, 1, 2.5, 5, 7.5, 10, 15, 20, 30, 40, 50, 70, 100, 150, 200, 250, 300, 400, 500, 600, 750]
-cs = map.contourf(x, y, data, clevs, cmap=cm.s3pcpn)
+cs = map.contourf(xx, yy, data, clevs, cmap=cm.s3pcpn)
 
 cbar = map.colorbar(cs, location='bottom', pad="5%")
-cbar.set_label('mm')
+cbar.set_label('AER')
 
 plt.title('Ionosphere Projection')
 plt.savefig("C:/Users/User/Documents/GitHub/Ionomap" + "/assets/Map.png")
