@@ -15,8 +15,8 @@ colors = {
 app.layout = html.Div([html.H1('IonoMap',
                                style={'color': 'white',
                                       'textAlign': 'center',
-                                      "background": "black"}),
-                       html.Img(src="\GitHub\Ionomap\Map.png")])
+                                      'background': 'black'}),
+                       html.Img(src='\GitHub\Ionomap\Map.png')])
 
 if __name__ == '__main__':
     app.run_server(debug=True)

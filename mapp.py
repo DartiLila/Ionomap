@@ -22,6 +22,6 @@ x, y = map(lons, lats)
 
 map.scatter(x, y, marker='o', color='m')
 
-plt.title("Ionosphere Projection")
+plt.title('Ionosphere Projection')
 plt.savefig('Map.png')
 plt.show()
