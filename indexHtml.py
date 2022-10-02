@@ -16,7 +16,9 @@ app.layout = html.Div([html.H1('IonoMap',
                                style={'color': 'white',
                                       'textAlign': 'center',
                                       'background': 'black'}),
-                       html.Img(src='\GitHub\Ionomap\Map.png')])
+                       html.Img(src=app.get_asset_url('Map.png'),height = 600,
+                                style={'margin-left': '335px',
+                                       'margin-right': '100px',})])
 
 if __name__ == '__main__':
     app.run_server(debug=True)
