@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Create the map // mos harro ne fund res = i
-map = Basemap(projection='kav7', lon_0=0, resolution='i')
+map = Basemap(projection='kav7', lon_0=0, resolution='c')
 
 # Color the map acording to area (Continents green, ocans and lakes black)
 map.drawmapboundary(fill_color='black')
@@ -20,8 +20,8 @@ lats = [51, -10, 40, -20]
 
 x, y = map(lons, lats)
 
-map.scatter(x, y, marker='o', color='r')
+map.scatter(x, y, marker='o', color='m')
 
 plt.title("Ionosphere Projection")
-plt.show()
+
 plt.savefig('Map.png')
