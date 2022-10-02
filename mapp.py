@@ -1,11 +1,9 @@
-from mpl_toolkits.basemap import Basemap
+from mpl_toolkits.basemap import Basemap, cm
 import matplotlib.pyplot as plt
 import numpy as np
-from osgeo import gdal
-from numpy import linspace
-from numpy import meshgrid
+from netCDF4 import Dataset as NetCDFFile
 
-# Create the map // mos harro ne fund res = i
+# Create the map
 map = Basemap(projection='kav7', lon_0=0, resolution='c')
 
 # Color the map acording to area (Continents green, ocans and lakes black)
@@ -31,13 +29,38 @@ map.drawmeridians(np.arange(-180., 181., 60.), labels=[1, 1, 0, 1], color='white
 #                         South African Space Agency: -34.424128, 19.224627
 
 
-lons = [-95.089188, 138.608255, -47.943437, -73.393664, 2.389846, 77.570820, 2.306115, -99.183290, -58.369542, 50.676696, -57.612809, 19.224627]
-lats = [29.560034, -34.920288, -15.815123, 45.520009, 48.843610, 13.035112, 48.873461, 19.360946, -34.616677, 26.224290, -25.293470, -34.424128]
+lons = [-95.089188, 138.608255, -47.943437, -73.393664, 2.389846, 77.570820, 2.306115, -99.183290, -58.369542,
+        50.676696, -57.612809, 19.224627]
+lats = [29.560034, -34.920288, -15.815123, 45.520009, 48.843610, 13.035112, 48.873461, 19.360946, -34.616677, 26.224290,
+        -25.293470, -34.424128]
 
 x, y = map(lons, lats)
 
 map.scatter(x, y, marker='o', color='m')
 
+nc = NetCDFFile('/Users/User/Documents/GitHub/Ionomap/exampleData/dataset1.nc')
+
+ionovar = nc.variables['amountofprecip']
+data = 0.01 * ionovar[:]
+latcorners = nc.variables['lat'][:]
+loncorners = -nc.variables['lon'][:]
+lon_0 = -nc.variables['true_lon'].getValue()
+lat_0 = nc.variables['true_lat'].getValue()
+
+fig = plt.figure(figsize=(8, 8))
+ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+
+ny = data.shape[0]
+nx = data.shape[1]
+lons, lats = map.makegrid(nx, ny)  # get lat/lons of ny by nx evenly space grid.
+x, y = map(lons, lats)  # compute map proj coordinates.
+
+clevs = [0, 1, 2.5, 5, 7.5, 10, 15, 20, 30, 40, 50, 70, 100, 150, 200, 250, 300, 400, 500, 600, 750]
+cs = map.contourf(x, y, data, clevs, cmap=cm.s3pcpn)
+
+cbar = map.colorbar(cs, location='bottom', pad="5%")
+cbar.set_label('mm')
+
 plt.title('Ionosphere Projection')
-plt.savefig("C:/Users/User/Documents/GitHub/Ionomap"+"/assets/Map.png")
+plt.savefig("C:/Users/User/Documents/GitHub/Ionomap" + "/assets/Map.png")
 plt.show()
