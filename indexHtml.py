@@ -9,6 +9,8 @@ from PIL import Image
 
 
 def convertImage():
+
+    # Get Image and make it tansparent
     img = Image.open("assets/Map.png")
     img = img.convert("RGBA")
 
@@ -26,8 +28,10 @@ def convertImage():
     img.save("assets/NewMap.png", "PNG")
     print("Successful")
 
-
+# Converts back to image
 convertImage()
+
+# Website design
 
 background = Image.open("assets/MapOfWorld.png")
 foreground = Image.open("assets/NewMap.png")

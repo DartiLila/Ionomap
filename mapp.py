@@ -38,8 +38,11 @@ x, y = map(lons, lats)
 
 map.scatter(x, y, marker='o', color='m')
 
+
+# Loads the data file
 nc = NetCDFFile('/Users/User/Documents/GitHub/Ionomap/exampleData/dataset1.nc')
 
+# Links to the data file
 ionovar = nc.variables['percent_of_normal']
 data = 0.01 * ionovar[:]
 latcorners = nc.variables['y'][:]
@@ -50,11 +53,14 @@ loncorners = -nc.variables['x'][:]
 fig = plt.figure(figsize=(8, 8))
 ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
 
+# Gets the specific coordinates and draws map
 ny = data.shape[0]
 nx = data.shape[1]
 lons, lats = map.makegrid(nx, ny)  # get lat/lons of ny by nx evenly space grid.
 xx, yy = map(lons, lats)  # compute map proj coordinates.
 
+
+# Map legend
 clevs = [0, 1, 2.5, 5, 7.5, 10, 15, 20, 30, 40, 50, 70, 100, 150, 200, 250, 300, 400, 500, 600, 750]
 cs = map.contourf(xx, yy, data, clevs, cmap=cm.s3pcpn)
 
