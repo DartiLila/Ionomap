@@ -1,26 +1,27 @@
-from ionoMapApp import app
-from ionoMapApp import server
+from ionoMapApp import *
 from dash import html
-from dash import dcc
-from dash.dependencies import Input, Output
 from map import *
 
 
 colors = {
     'background': '#111111',
-    'text': '#7FDBFF'
+    'text': '#4F8A39'
 }
 
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children = [html.H1('IonoMap',
-                               style={'color': 'white',
+                               style={'color': colors['text'],
                                       'textAlign': 'center',
-                                      #'background': 'black'
+                                      'background': 'black'
+                                    }),
+                       html.Div(style={'backgroundColor': colors['background']}, children = [html.H1('IonoMap',
+                               style={'color': colors['text'],
+                                      'textAlign': 'center',
+                                      'background': 'black'
                                     }),
                        html.Img(src=app.get_asset_url('Map.png'), height=600,
-                                style={'margin-left': '335px',
-                                       'position': 'fixed',
-                                       'margin-right': '100px',
-                                       'background': '#111111'})])
+                                style={'position': 'fixed',
+                                       })])])
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
