@@ -1,4 +1,4 @@
-from ionoMapApp import *
+from ionoMapApp import app
 from dash import html
 from map import *
 
