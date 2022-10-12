@@ -1,0 +1,12 @@
+NASA Mission Control Centre, 29.560034, -95.089188
+Australian Space Center,-34.920288, 138.608255
+Brazilian Space Agency, -15.815123, -47.943437
+Canadian Space Agency, 45.520009, -73.393664
+European Space Agency (France), 48.843610, 2.389846
+Indian Space Research Organization, 13.035112, 77.570820
+Japan Aerospace Exploration Agency, 48.873461, 2.306115
+Mexican Aerospace Agency, 19.360946, -99.183290
+National Space Activities Commission of Argentina, -34.616677, -58.369542
+National Space Science Agency of Bahrain, 26.224290, 50.676696
+Paraguayan Space Agency, -25.293470, -57.612809
+South African Space Agency, -34.424128, 19.224627
