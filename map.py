@@ -28,7 +28,7 @@ nx = data.shape[1]
 lons, lats = map.makegrid(nx, ny)
 xx, yy = map(lons, lats)
 
-clevs = [0, 1, 2.5, 5, 7.5, 10, 15, 20, 30, 40, 50, 70, 100, 150, 200, 250, 300, 400, 500, 600, 750]
+clevs = [1, 2.5, 5, 7.5, 10, 15, 20, 30, 40, 50, 70, 100, 150, 200, 250, 300, 400, 500, 600, 750]
 cs = map.contourf(xx, yy, data, clevs, cmap=cm.s3pcpn)
 cbar = map.colorbar(cs, location='bottom', pad="5%")
 cbar.set_label('AER')
