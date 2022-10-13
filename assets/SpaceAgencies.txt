@@ -10,4 +10,3 @@ National Space Activities Commission of Argentina, -34.616677, -58.369542
 National Space Science Agency of Bahrain, 26.224290, 50.676696
 Paraguayan Space Agency, -25.293470, -57.612809
 South African Space Agency, -34.424128, 19.224627
-
