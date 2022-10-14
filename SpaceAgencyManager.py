@@ -5,15 +5,7 @@ class SpaceAgency:
         self.latitude = latitude
 
     def getValues(self):
-        print(self.name, self.longitude, self.latitude)
-
-    def getLongitudes(self):
-        return self.longitude
-
-    def getLatitudes(self):
-        return self.latitude
-
-
+        return self.name, self.longitude, self.latitude
 
 class SpaceAgenciesManager:
     def __init__(self, fileName='C:/Users/User/Documents/GitHub/Ionomap/assets/SpaceAgencies.txt'):
@@ -49,11 +41,11 @@ class SpaceAgenciesManager:
             lines = textFile.readlines()
             return map(self.parseAgency, lines)
 
-
     @staticmethod
     def parseAgency(line):
         tokens = line.strip().split(",")
         return SpaceAgency(tokens[0], float(tokens[1]), float(tokens[2]))
+
 
 Agencies = SpaceAgenciesManager()
 Agencies.agenciesObjCreator()

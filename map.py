@@ -5,8 +5,8 @@ from CNDataAnalysys import *
 from SpaceAgencyManager import *
 
 for line in Agencies.agenciesObjCreator():
-    longitudes.append(line.getLatitudes())
-    latitudes.append(line.getLongitudes())
+    longitudes.append(line.latitude)
+    latitudes.append(line.longitude)
 
 fig = pyplot.figure(figsize=(8, 8))
 ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])
